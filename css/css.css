@@ -1,0 +1,284 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.ana_kutu{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.menu_buton{
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    top: 15px;
+    left: 15px;
+    z-index: 99;
+    visibility: hidden;
+}
+.menu_buton::after{
+    content: "";
+    position: absolute;
+    background-image: url(../img/menu_buton.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+
+.kisiler{
+    position: absolute;
+    background-color: #48f37b;
+    width: 25%;
+    height: 100%;
+    padding-top: 15px;
+    transition: 0.5s;
+}
+.kisi{
+    position: relative;
+    background-color: #f0f8ff;
+    padding: 5px;
+    padding-right: 20px;
+    margin: 5px;
+    margin-bottom: 10px;
+    width: 90%;
+    border-radius: 5px;
+    word-wrap: break-word;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.kisi:hover{
+    background-color: #b1b4b6;
+}
+.kisi:hover::after{
+    background-color: #dae0e4;
+}
+.kisi[online]::after, .kisi[ofline]::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 10px;
+    top: 10px;
+    border-radius: 100%;
+}
+.kisi[online]::after{
+    background-color: #00ff4c;
+}
+.kisi[ofline]::after{
+    background-color: #8d8d8d;
+}
+.kisi[aktif]{
+    background-color: #68ff96;
+}
+
+
+.mesajlasma{
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    right: 0;
+}
+.ust_bar{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: #b6e2c3;
+}
+.ust_bar_isim{
+    position: absolute;
+    width: min-content;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.ust_bar_isim[online]::after, .ust_bar_isim[ofline]::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%);
+    right: -50%;
+    top: 50%;
+    border-radius: 100%;
+}
+.ust_bar_isim[online]::after{
+    background-color: #33ff00;
+}
+.ust_bar_isim[ofline]::after{
+    background-color: #8d8d8d;
+}
+.mesajlasma_kutusu{
+    background-color: #77eb9a;
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    padding: 10px;
+}
+.mesajlar{
+    width: 100%;
+    min-height: 10%;
+    padding: 10px;
+    display: block;
+}
+.gelen_mesaj, .giden_mesaj{
+    padding: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    border-radius: 5px;
+    width: fit-content;
+    max-width: 45%;
+    min-width: 20%;
+    height: fit-content;
+    word-break: break-all;
+}
+.gelen_mesaj{
+    background-color: #27cf59;
+}
+.giden_mesaj{
+    float: right;
+    background-color: #a7f0bd;
+}
+.gelen_mesaj::before, .giden_mesaj::before{
+    content: "";
+    background-color: inherit;
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    transform: rotate(45deg);
+    top: 3px;
+}
+.gelen_mesaj::before{
+    left: -5px;
+}
+.giden_mesaj::before{
+    right: -5px;
+}
+.gelen_mesaj::after, .giden_mesaj::after{
+    content: attr(saat);
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    font-size: smaller;
+    color: #1b5e2f;
+    font-weight: 400;
+}
+.gelen_mesaj::after{
+    bottom: 0;
+    right: 5px;
+}
+.giden_mesaj::after{
+    bottom: 0;
+    left: 5px;
+}
+
+.mesaj_yazma_kutusu{
+    background-color: wheat;
+    width: 100%;
+    height: 10%;
+    position: relative;
+}
+.yazi{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    outline: #48f37b;
+    transform: translate(0, -50%);
+    top: 50%;
+}
+.yazi textarea{
+    position: absolute;
+    width: 97%;
+    height: 100%;
+    transform: translate(-50%, 0);
+    left: 50%;
+    resize: none;
+    font-size: x-large;
+    padding: 5px 10% 5px 5px;
+    outline: none;
+    border: #7ab18a solid 2px;
+    border-radius: 5px;
+}
+.yazi textarea::-webkit-scrollbar{
+    visibility: hidden;
+}
+.dosya{
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    right: 0;
+}
+.mesaj_gonder_buton{
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;    
+}
+.mesaj_gonder_buton::before{
+    content: "";
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    visibility: visible;
+    background-color: #48f37b;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+.mesaj_gonder_buton.gonder::before{
+    background-image: url(../img/gonder.png);
+}
+.mesaj_gonder_buton.yukle::before{
+    background-image: url(../img/yukle.png);
+}
+@media (max-width: 700px) {
+        .menu_buton::after{
+            visibility: visible;
+        }
+        .kisiler{
+            width: 100%;
+            position: absolute;
+            left: -100%;
+            z-index: 98;
+        }
+        .kisi{
+            width: 50%;
+            transform: translate(-50%);
+            left: 50%;
+        }
+        .mesajlasma{
+            position: absolute;
+            width: 100%;
+        }
+        .menu_buton:checked ~ .kisiler{
+            left: 0;
+        }
+        .mesaj_gonder_buton::before{
+            height: 40px;
+            width: 40px;
+        }
+}
